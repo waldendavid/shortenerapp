@@ -3,6 +3,8 @@ package pl.karol.shortenerapp.repository;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import pl.karol.shortenerapp.model.UrlBox;
+
 public class UrlRepositoryImpl implements UrlRepository {
 
 	private RedisTemplate<String, String> redisTemplate;
@@ -16,12 +18,13 @@ public class UrlRepositoryImpl implements UrlRepository {
 	}
 
 	@Override
-	public void save(String LongUrl) {
-		hashOperations.put("shortUrl", "shortUrl" , LongUrl);
+	public void save(UrlBox urlBox) {
+		//TODO
+
 	}
 
 	@Override
-	public String readById(String id) {
+	public UrlBox readById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

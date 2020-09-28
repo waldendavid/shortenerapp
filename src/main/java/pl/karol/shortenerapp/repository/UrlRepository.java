@@ -1,9 +1,11 @@
 package pl.karol.shortenerapp.repository;
 
+import pl.karol.shortenerapp.model.UrlBox;
+
 public interface UrlRepository {
 
-	void save(String LongUrl);
+	void save(UrlBox urlBox);
 
-	String readById(String id);
+	UrlBox readById(String id);
 
 }

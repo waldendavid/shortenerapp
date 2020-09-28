@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.karol.shortenerapp.service.UrlService;
+import pl.karol.shortenerapp.service.UrlServiceImpl;
 
 @RestController
 @RequestMapping
 public class URLController {
 
-	private UrlService urlService;
+	private UrlServiceImpl urlService;
 
 	@Autowired
-	public URLController(UrlService theUrlService) {
+	public URLController(UrlServiceImpl theUrlService) {
 		urlService = theUrlService;
 	}
 

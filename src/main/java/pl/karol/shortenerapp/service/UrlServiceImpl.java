@@ -8,7 +8,7 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UrlService {
+public class UrlServiceImpl {
 
 	public static final int ID_SIZE = 6;
 	public Map<String, String> urlMap = new HashMap<>();
