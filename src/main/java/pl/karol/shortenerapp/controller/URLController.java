@@ -30,7 +30,6 @@ public class URLController {
 
 	@PostMapping("/link")  // shorter annotation that GET above
 	public String addUrl(@RequestBody String longUrl) {
-		urlService.addUrl(longUrl);
-		return urlService.getShortUrl(longUrl);
+		return urlService.makeBoxUrl(longUrl);
 	}
 }

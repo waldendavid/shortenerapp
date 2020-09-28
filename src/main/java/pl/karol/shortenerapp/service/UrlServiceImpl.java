@@ -5,7 +5,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import pl.karol.shortenerapp.model.UrlBox;
+import pl.karol.shortenerapp.repository.UrlRepository;
 
 @Service
 public class UrlServiceImpl {
@@ -13,16 +17,16 @@ public class UrlServiceImpl {
 	public static final int ID_SIZE = 6;
 	public Map<String, String> urlMap = new HashMap<>();
 
-	// TODO check if method should be public
-	public String getLongUrl(String longUrl) {
-		if (!IsLongUrl(longUrl)) {
-			addUrl(longUrl);
-		}
+	@Autowired
+	UrlRepository urlRepository;
 
-		return urlMap.get(longUrl);
+	// TODO check if method should be public
+	public String getLongUrl(String shortUrl) {
+		UrlBox urlBox = urlRepository.readById(shortUrl);
+		return urlBox.getLongUrl();
 	}
 
-	public String getShortUrl(String longUrl) { // TODO containsValue tutaj można zrobić
+	public String getShortUrl(String longUrl) {
 		for (Entry<String, String> entry : urlMap.entrySet()) {
 			if (longUrl.equals(entry.getValue())) {
 				return entry.getKey();
@@ -32,10 +36,16 @@ public class UrlServiceImpl {
 
 	}
 
+	public String makeBoxUrl(String longUrl) {
+		// TODO check if LongUrl is in DB
+		String shortUrl = generateShortUrl();
+		urlRepository.save(new UrlBox(shortUrl, longUrl));
+		return shortUrl;
+	}
+
 	public void addUrl(String longUrl) {
-		if (!IsLongUrl(longUrl)) {
-			urlMap.put(generateShortUrl(), longUrl);
-		}
+		// TODO check if LongUrl is in DB
+		urlRepository.save(new UrlBox(generateShortUrl(), longUrl));
 	}
 
 	private String generateShortUrl() {
@@ -51,8 +61,6 @@ public class UrlServiceImpl {
 		return innerUrl.toString();
 	}
 
-	private boolean IsLongUrl(String longUrl) {
-		return urlMap.containsValue(longUrl);
-	}
+
 
 }
