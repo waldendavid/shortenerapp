@@ -1,8 +1,5 @@
 package pl.karol.shortenerapp.service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +9,10 @@ import pl.karol.shortenerapp.model.UrlBox;
 import pl.karol.shortenerapp.repository.UrlRepository;
 
 @Service
-public class UrlServiceImpl {
+public class UrlServiceImpl implements UrlService{
 
 	public static final int ID_SIZE = 6;
-	public Map<String, String> urlMap = new HashMap<>();
+
 
 	@Autowired
 	UrlRepository urlRepository;
@@ -26,16 +23,6 @@ public class UrlServiceImpl {
 		return urlBox.getLongUrl();
 	}
 
-	public String getShortUrl(String longUrl) {
-		for (Entry<String, String> entry : urlMap.entrySet()) {
-			if (longUrl.equals(entry.getValue())) {
-				return entry.getKey();
-			}
-		}
-		return null;
-
-	}
-
 	public String makeBoxUrl(String longUrl) {
 		// TODO check if LongUrl is in DB
 		String shortUrl = generateShortUrl();
@@ -43,10 +30,6 @@ public class UrlServiceImpl {
 		return shortUrl;
 	}
 
-	public void addUrl(String longUrl) {
-		// TODO check if LongUrl is in DB
-		urlRepository.save(new UrlBox(generateShortUrl(), longUrl));
-	}
 
 	private String generateShortUrl() {
 		Random random = new Random();
@@ -55,11 +38,14 @@ public class UrlServiceImpl {
 		for (int i = 0; i < ID_SIZE; i++) {
 			innerUrl.append(chars.charAt(random.nextInt(chars.length())));
 		}
-		if (urlMap.containsKey(innerUrl.toString())) {
-			generateShortUrl();
-		}
+		// TODO check if shortUrl is in DB
+//		if (urlMap.containsKey(innerUrl.toString())) {
+//			generateShortUrl();
+//		}
 		return innerUrl.toString();
 	}
+
+
 
 
 

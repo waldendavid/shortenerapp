@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.karol.shortenerapp.service.UrlService;
 import pl.karol.shortenerapp.service.UrlServiceImpl;
 
 @RestController
@@ -31,5 +32,6 @@ public class URLController {
 	@PostMapping("/link")  // shorter annotation that GET above
 	public String addUrl(@RequestBody String longUrl) {
 		return urlService.makeBoxUrl(longUrl);
+
 	}
 }
