@@ -40,7 +40,7 @@ public class URLController {
 		return new ModelAndView("redirect:" + urlService.getLongUrl(id));
 	}
 
-	@PostMapping("/add") // shorter annotation that GET above
+	@PostMapping("/link") // shorter annotation that GET above
 	public String addUrl(@ModelAttribute String longUrl, Model model
 	// ,@RequestBody String longUrl
 	) {
