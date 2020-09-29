@@ -9,10 +9,9 @@ import pl.karol.shortenerapp.model.UrlBox;
 import pl.karol.shortenerapp.repository.UrlRepository;
 
 @Service
-public class UrlServiceImpl implements UrlService{
+public class UrlServiceImpl implements UrlService {
 
 	public static final int ID_SIZE = 6;
-
 
 	@Autowired
 	UrlRepository urlRepository;
@@ -24,12 +23,10 @@ public class UrlServiceImpl implements UrlService{
 	}
 
 	public String makeBoxUrl(String longUrl) {
-		// TODO check if LongUrl is in DB
 		String shortUrl = generateShortUrl();
 		urlRepository.save(new UrlBox(shortUrl, longUrl));
 		return shortUrl;
 	}
-
 
 	private String generateShortUrl() {
 		Random random = new Random();
@@ -37,16 +34,12 @@ public class UrlServiceImpl implements UrlService{
 		StringBuilder innerUrl = new StringBuilder();
 		for (int i = 0; i < ID_SIZE; i++) {
 			innerUrl.append(chars.charAt(random.nextInt(chars.length())));
+		} // check if shortUrl is in DB
+		UrlBox urlBox = urlRepository.readById(innerUrl.toString());
+		if (urlBox.equals(null)) {
+			generateShortUrl();
 		}
-		// TODO check if shortUrl is in DB
-//		if (urlMap.containsKey(innerUrl.toString())) {
-//			generateShortUrl();
-//		}
 		return innerUrl.toString();
 	}
-
-
-
-
 
 }
