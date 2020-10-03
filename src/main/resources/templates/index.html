@@ -8,7 +8,7 @@
 
 <form th:action="@{/link}" method="post">
 
-<p> LongUrl: <input type="text" th:field="${longUrl}"/></p>
+<p> LongUrl: <input type="text" th:field="*{longUrl}"/></p>
 <p> <input type="submit" value="add URL"></p>
 
 </form>
