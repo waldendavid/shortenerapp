@@ -13,6 +13,7 @@ Model is simple - object stores short, genereted URL and long URL. The repositor
   * Postman - tests.
 
 ## What I've learned
+  * Divide responisibilities. Firstly Controller - Service (Map<String, String> instead of DataBase). Secondly test. Thirdly I added model, DB and test it. Finally adding Views.
   * Build automation - make a plan and add dependencies at the beginning of the process.
   * How convenient is Spring Boot to use.
   * MVC in practice.
@@ -20,7 +21,7 @@ Model is simple - object stores short, genereted URL and long URL. The repositor
   * HTTP methods using controller and Postman.
   * Linux - deepening knowledge about the terminal.
 
-## What i should to learn and improve
+## What I should to learn and improve
 
   * Posibilities of Spring Boot,
   * Developing views, also HTTP,
