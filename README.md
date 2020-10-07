@@ -5,7 +5,6 @@ Model is simple - object stores short, genereted URL and long URL. The repositor
 [Difference between spring JSP MVC and Thymeleaf MVC](https://stackoverflow.com/questions/41019274/difference-between-spring-jsp-mvc-and-thymeleaf-mvc).
 ## Technologies
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 
 ## Quo Vadis...
