@@ -22,7 +22,7 @@ Model is simple - object stores short, genereted URL and long URL. The repositor
   * Linux - deepening knowledge about the terminal.
 
 ## What I should to learn and improve
-
+  * ToDo - interact with the Docker,
   * Posibilities of Spring Boot,
   * Developing views, also HTTP,
   * Gradle,
