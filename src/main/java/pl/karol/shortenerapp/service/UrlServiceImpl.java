@@ -36,7 +36,7 @@ public class UrlServiceImpl implements UrlService {
 			innerUrl.append(chars.charAt(random.nextInt(chars.length())));
 		} // check if shortUrl is in DB
 		UrlBox urlBox = urlRepository.readById(innerUrl.toString());
-		if (urlBox.equals(null)) {
+		if (urlBox == null) {
 			generateShortUrl();
 		}
 		return innerUrl.toString();
